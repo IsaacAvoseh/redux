@@ -36,14 +36,18 @@ export default function Weather() {
      const getData = async () => {
          const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${input} &appid=677b0f602f20d710754ced87f9e9bd49`).catch(err => {  
                 console.log(err);
+                swal('Error', 'Something went wrong or Invaid city name', 'error');
+                return;
      });
          if(response.data.cod === 200){
+             swal('Weather data fetched successfully',' ', 'success');
           dispatch(weatherActions.setWeather(response.data));
           console.log('response',response.data)
-         } else {
-                swal('Oops!', 'Something went wrong or invalid city name', 'error');
-      
-            }
+         } 
+            else{
+                    swal('Oops!', 'Something went wrong', 'error');
+                    return;
+                }
      }
 
     //get lat and lon
@@ -102,7 +106,7 @@ export default function Weather() {
 
 //submitting form
     const handleSubmit = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         getData();
 
         setTimeout(() => {
@@ -128,15 +132,17 @@ export default function Weather() {
 
   return (
       <div style={{
-          background: 'url(https://source.unsplash.com/600x900/?nature,water")',
-      }} >
+          background: 'url(https://source.unsplash.com/600x900/?nature,water)',
+          backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+      }}  >
           <div className="hero" data-bg-image="images/banner.png">
               <div className="container">
-                  <form className="find-location">
+                  <div onSubmit={ handleSubmit } className="find-location">
                       <input name='input' type="text" placeholder="Find your location..." value={ input }  onChange={ e => setInput(e.target.value) }
                        />
-                      <input onClick={handleSubmit} type="submit" defaultValue="Find" />
-                  </form>
+                      <input onClick={ handleSubmit } type="submit" defaultValue="Find" />
+                  </div>
               </div>
           </div>
           <div className="forecast-table">
