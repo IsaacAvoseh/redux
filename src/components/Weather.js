@@ -34,6 +34,7 @@ export default function Weather() {
 
 
      const getData = async () => {
+         console.log('getting data')
          const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${input} &appid=677b0f602f20d710754ced87f9e9bd49`).catch(err => {  
                 console.log(err);
                 swal('Error', 'Something went wrong or Invaid city name', 'error');
@@ -49,14 +50,12 @@ export default function Weather() {
                     return;
                 }
      }
+        getData();
+
 
     //get lat and lon
-  if (data) {
-    const lat = data.coord.lat;
-    const lon = data.coord.lon;
-    console.log('lat',lat)
-    console.log('lon',lon)
-  }
+    let lat = data?.coord.lat || 6.465422;
+    let lon = data?.coord.lon || 6.306448;
 
 
      const getForecast = async () => {
