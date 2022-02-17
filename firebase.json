@@ -1,7 +1,7 @@
 {
   "hosting": {
     "site": "redux-stor",
-    "public": "public",
+  "public": "build",
     "ignore": [
       "firebase.json",
       "**/.*",
