@@ -5,6 +5,9 @@ import Footer from './components/Layout/Footer';
 import Layout from './components/Layout/Layout';
 import Products from './components/Shop/Products';
 import Weather from './components/Weather';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import CartPage from './components/Cart/CartPage';
 
 function App() {
   const showCart = useSelector(state => state.ui.cartIsVisible);
@@ -15,6 +18,7 @@ function App() {
   }
   return (
     <>
+    <ToastContainer />
      <Layout>
 
      {
@@ -29,6 +33,7 @@ function App() {
     <Routes>
         <Route path="/products" element={<Products />} />
         <Route path="/" element={<Weather />} />
+        <Route path="/cart" element={<CartPage />} />
  </Routes>
    
     </BrowserRouter>
