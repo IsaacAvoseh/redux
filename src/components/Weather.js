@@ -50,7 +50,7 @@ export default function Weather() {
                     return;
                 }
      }
-        getData();
+        // getData();
 
 
     //get lat and lon
