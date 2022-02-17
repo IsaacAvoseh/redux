@@ -51,8 +51,12 @@ export default function Weather() {
      }
 
     //get lat and lon
-    let lat = data?.coord.lat ||6.465422;
-    let lon = data?.coord.lon ||6.306448;
+  if (data) {
+    const lat = data.coord.lat;
+    const lon = data.coord.lon;
+    console.log('lat',lat)
+    console.log('lon',lon)
+  }
 
 
      const getForecast = async () => {
