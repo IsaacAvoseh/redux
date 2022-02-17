@@ -131,7 +131,7 @@ export default function Weather() {
             getForecast();
         }, 3000);
 
-        }, [data]);
+        }, []);
 
   return (
       <div style={{
