@@ -54,8 +54,9 @@ export default function Weather() {
 
 
     //get lat and lon
-    let lat = data?.coord.lat !== undefined ? data?.coord.lat : 6.465422;
-    let lon = data?.coord.lon !== undefined ? data?.coord.lon : 6.306448;
+    let lat = data?.coord?.lat === undefined ? 6.4 : data?.coord?.lat;
+    let lon = data?.coord?.lon === undefined ? 6.3 : data?.coord?.lon;
+    console.log('lat',lat)
 
 
      const getForecast = async () => {
@@ -126,7 +127,7 @@ export default function Weather() {
     
      useEffect(() => {
         
-        // getData();
+        getData();
         setTimeout(() => {
             getForecast();
         }, 3000);
@@ -157,7 +158,7 @@ export default function Weather() {
                               <div className="date">{ date }</div>
                           </div> {/* .forecast-header */}
                           <div className="forecast-content">
-                              <div className="location">{ data?.name + ' ' +data?.sys.country}</div>
+                              <div className="location">{ data?.name + ' ' +data?.sys?.country}</div>
                               <div className="degree">
                                   <div className="num">{ parseInt(temp) }<sup>o</sup>C</div>
                                   <div className="forecast-icon">
