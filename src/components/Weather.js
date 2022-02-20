@@ -203,7 +203,7 @@ export default function Weather() {
                           </div> 
                           <div className="forecast-content">
                               <div className="forecast-icon">
-                                    <i className={`fas ${icon2} fa-3x`} ></i>
+                                    <i className={`fas ${icon2} fa-2x`} ></i>
                               </div>
                                             <div className="degree">{parseInt(item.temp.day) }<sup>o</sup>C</div>
                               <small>{ item.temp.min }<sup>o</sup></small>
